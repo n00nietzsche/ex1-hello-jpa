@@ -18,10 +18,6 @@ public class JpaMain {
         // 실제 코드가 들어가는 부분
         try {
 
-            Member member1 = entityManager.find(Member.class, 150L);
-            member1.setName("asdfasdf");
-
-            entityManager.clear();
 
             transaction.commit();
         }

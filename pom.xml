@@ -15,11 +15,19 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>5.3.10.Final</version>
         </dependency>
+
         <!-- H2 데이터베이스 -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.199</version>
+        </dependency>
+
+        <!-- XML을 자바 오브젝트로 매핑해주는 라이브러리 -->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.0</version>
         </dependency>
     </dependencies>
 

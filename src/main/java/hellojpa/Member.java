@@ -1,30 +1,48 @@
 package hellojpa;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity // JPA를 사용하는 클래스로 인식하기 위해서 꼭 입력해야 함
+@Entity
 public class Member {
-    public Member() {
-    }
 
-    @Id // JPA에게 PK가 뭔지 알려주어야 함, javax.persistence 밑에 있는 것을 선택
+    @Id
+    @GeneratedValue
+    @Column(name = "MEMBER_ID")
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "USERNAME")
     private String username;
 
-    private Integer age;
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private Locker locker;
 
-    @Enumerated(EnumType.STRING)
-    private RoleType roleType;
+    @OneToMany(mappedBy = "member")
+    private List<MemberProduct> memberProducts = new ArrayList<>();
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
+    public Long getId() {
+        return id;
+    }
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastModifiedDate;
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    @Lob
-    private String description;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Locker getLocker() {
+        return locker;
+    }
+
+    public void setLocker(Locker locker) {
+        this.locker = locker;
+    }
 }

@@ -17,7 +17,15 @@ public class JpaMain {
 
         // 실제 코드가 들어가는 부분
         try {
+            Movie myMovie = new Movie();
+            myMovie.setPrice(10000);
+            myMovie.setName("바람");
+            myMovie.setActor("배우");
+            myMovie.setDirector("감독");
+            entityManager.persist(myMovie);
 
+            Movie movie = entityManager.find(Movie.class, 1L);
+            System.out.println("movie = " + movie);
 
             transaction.commit();
         }
